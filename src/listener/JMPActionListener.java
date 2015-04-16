@@ -17,6 +17,7 @@ public class JMPActionListener implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+
 		if (e.getSource() == jmp.getBtnPlay()) {
 			// Musik startet
 			jmp.getMasterPlayer().play();

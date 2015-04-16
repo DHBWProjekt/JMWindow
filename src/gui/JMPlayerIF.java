@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 
 import lib.MusicFolderToPathList;
 import listener.JMPActionListener;
+import listener.JMPInternalFrameListener;
 import listener.JMPMusicTableSelectionListener;
 import data.MusicTable;
 
@@ -33,8 +34,7 @@ public class JMPlayerIF extends JInternalFrame {
 	// Objekt vom Typ JMPlayer wird übergeben, für den Zugriff
 	private JMPActionListener bal = new JMPActionListener(this);
 
-	private String[] musicDataTitle = new String[] { "Pfad", "Pfad ASCII",
-			"Dauer" };
+	private String[] musicDataTitle = new String[] { "Pfad", "Pfad ASCII" };
 	// MusicData wird erstellt und Klassenmethode aufgerufen um Ordner
 	// auszulesen
 	private String[][] musicData = MusicFolderToPathList.getMusicData(this);
@@ -68,7 +68,7 @@ public class JMPlayerIF extends JInternalFrame {
 		// Hauptfenster übergibt beim Aufruf von JMPLayerIF sich selber, um die
 		// Verknüpfung herzustellen und in hf reinzuschreiben
 		hf = parent;
-		// Fenster Titel wird gesetzt
+
 		// Buttons bekommen den Action listener bal zugewiesen
 		btnPlay.addActionListener(bal);
 		btnPause.addActionListener(bal);
@@ -93,6 +93,9 @@ public class JMPlayerIF extends JInternalFrame {
 		myReiter1.add(openFile);
 		myMenu.add(myReiter1);
 		setJMenuBar(myMenu);
+
+		JMPInternalFrameListener ifl = new JMPInternalFrameListener(this);
+		this.addInternalFrameListener(ifl);
 
 		// Layout von Contentpane wird gestetzt
 		setLayout(new BorderLayout());
