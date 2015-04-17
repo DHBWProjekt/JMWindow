@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import javafx.scene.media.MediaPlayer;
 
 import javax.swing.JButton;
-import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -22,22 +21,22 @@ import listener.JMPInternalFrameListener;
 import listener.JMPMusicTableSelectionListener;
 import data.MusicTable;
 
-public class JMPlayerIF extends JInternalFrame {
+public class JMPlayerPanel extends JPanel {
 	// Haupfenster wird angelegt und im Konstruktor übergeben, damit der
 	// JMPlayerIF sein Hauptfenster kennt
 	private Hauptfenster hf;
 	// SelectionListener für Tabelle wird erstellt,
 	// Objekt vom Typ JMPlayer wird übergeben, für den Zugriff
 	private JMPMusicTableSelectionListener tsl = new JMPMusicTableSelectionListener(
-			this);
+			null);
 	// ActionListener für Buttons und MenuItems wird erstellt,
 	// Objekt vom Typ JMPlayer wird übergeben, für den Zugriff
-	private JMPActionListener bal = new JMPActionListener(this);
+	private JMPActionListener bal = new JMPActionListener(null);
 
 	private String[] musicDataTitle = new String[] { "Pfad", "Pfad ASCII" };
 	// MusicData wird erstellt und Klassenmethode aufgerufen um Ordner
 	// auszulesen
-	private String[][] musicData = MusicFolderToPathList.getMusicData(this);
+	private String[][] musicData = MusicFolderToPathList.getMusicData(null);
 	// Tablemodel wird erstellt um es in ein JTabel anzeigen zu lassen
 	private DefaultTableModel pfadModel = new DefaultTableModel(musicData,
 			musicDataTitle);
@@ -61,10 +60,9 @@ public class JMPlayerIF extends JInternalFrame {
 	private JMenuItem openFile = new JMenuItem("Ordner öffnen");
 
 	// Konstruktor für JMPlayer,
-	public JMPlayerIF(Hauptfenster parent, String name, boolean resizable,
+	public JMPlayerPanel(Hauptfenster parent, String name, boolean resizable,
 			boolean closable, boolean maximizable, boolean iconifiable) {
 		// Superklasse ist JInternalFrame und Standardwerte werden übergeben
-		super(name, resizable, closable, maximizable, iconifiable);
 		// Hauptfenster übergibt beim Aufruf von JMPLayerIF sich selber, um die
 		// Verknüpfung herzustellen und in hf reinzuschreiben
 		hf = parent;
@@ -91,16 +89,15 @@ public class JMPlayerIF extends JInternalFrame {
 		openFile.addActionListener(bal);
 		myReiter1.add(openFile);
 		myMenu.add(myReiter1);
-		setJMenuBar(myMenu);
+		// setJMenuBar(myMenu);
 
-		JMPInternalFrameListener ifl = new JMPInternalFrameListener(this);
-		this.addInternalFrameListener(ifl);
+		JMPInternalFrameListener ifl = new JMPInternalFrameListener(null);
 
 		// Layout von Contentpane wird gestetzt
 		setLayout(new BorderLayout());
 		add(northPanel, BorderLayout.NORTH);
-		getContentPane().add(new JScrollPane(table), BorderLayout.CENTER);
-		pack();
+		add(new JScrollPane(table), BorderLayout.CENTER);
+		// pack();
 		setVisible(true);
 	}
 

@@ -2,8 +2,6 @@ package lib;
 
 import java.io.File;
 
-import javafx.scene.media.Media;
-
 import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 
@@ -55,10 +53,6 @@ public abstract class MusicFolderToPathList {
 					// Pfad wird ausgelesen
 					musicData[musicFileCounter][1] = path;
 					System.out.println("File: " + musicFileCounter);
-					Media temp = new Media(path);
-					System.out.print(temp.getMetadata().get("album") + " ");
-					System.out.print(temp.getMetadata().get("genre") + " ");
-					System.out.println(temp.getMetadata().get("title"));
 					musicFileCounter++;
 				}
 			}
