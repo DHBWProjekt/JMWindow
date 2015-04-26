@@ -1,24 +1,36 @@
 package gui;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
-import javax.swing.JSplitPane;
+import javax.swing.UIManager;
 
 public class JMSoundboard extends JFrame {
-
-	private JMPlayerPanel test1 = new JMPlayerPanel(null, "Test", true, true,
-			true, true);
-	private JMPlayerPanel test2 = new JMPlayerPanel(null, "Test", true, true,
-			true, true);
+	SoundButtonPanel sbp = new SoundButtonPanel();
 
 	public JMSoundboard() {
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		// btnShuffle.setPreferredSize(new Dimension(130, 20));
+		// myReiter1.add(myItem1);
+		// myMenu.add(myReiter1);
+		// shuffleBtnPanel.setPreferredSize(new Dimension(130, 100));
+		// sPanel.setPreferredSize(new Dimension(100, 100));
+		// sPanel.setDividerLocation(1.0);
+		// setLayout(new BorderLayout());
+		// sPanel.setRightComponent(gblPanel);
+		// sPanel.setLeftComponent(shuffleBtnPanel);
+		// sPanel.setEnabled(true);
 
-		JSplitPane splitpane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
-		splitpane.setRightComponent(test1);
-		splitpane.setLeftComponent(test2);
-		getContentPane().add(splitpane);
-		setSize(500, 500);
+		add(sbp, BorderLayout.CENTER);
+		// setJMenuBar(myMenu);
+		setSize(900, 700);
 		setVisible(true);
-
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
