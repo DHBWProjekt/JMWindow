@@ -1,32 +1,36 @@
 package gui;
 
-import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
-import javax.swing.UIManager;
 
 public class JMSoundboard extends JFrame {
 	SoundButtonPanel sbp = new SoundButtonPanel();
+	ShuffleButtonPanel shbp = new ShuffleButtonPanel();
+	private GridBagConstraints c = new GridBagConstraints();
 
 	public JMSoundboard() {
-		try {
-			UIManager.setLookAndFeel(UIManager
-					.getCrossPlatformLookAndFeelClassName());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// btnShuffle.setPreferredSize(new Dimension(130, 20));
-		// myReiter1.add(myItem1);
-		// myMenu.add(myReiter1);
-		// shuffleBtnPanel.setPreferredSize(new Dimension(130, 100));
-		// sPanel.setPreferredSize(new Dimension(100, 100));
-		// sPanel.setDividerLocation(1.0);
-		// setLayout(new BorderLayout());
-		// sPanel.setRightComponent(gblPanel);
-		// sPanel.setLeftComponent(shuffleBtnPanel);
-		// sPanel.setEnabled(true);
+		setLayout(new GridBagLayout());
 
-		add(sbp, BorderLayout.CENTER);
+		c.fill = GridBagConstraints.BOTH;
+		c.gridy = 0; // Zeile 0
+		c.gridx = 0; // Spalte 0
+		c.weighty = 0.1; // Prozentual zugeordnete Höhe
+		c.weightx = 0.1; // Prozentual zugeordnete Breite
+		shbp.setPreferredSize(new Dimension(1, 1));
+		add(shbp, c);
+
+		c.gridy = 0; // Zeile 0
+		c.gridx = 1; // Spalte 1
+		c.weighty = 0.1; // Prozentual zugeordnete Höhe
+		c.weightx = 0.6; // Prozentual zugeordnete Breite
+		c.gridwidth = 2; // Geht über zwei Spalten
+		sbp.setPreferredSize(new Dimension(1, 1));
+		add(sbp, c);
+		c.gridwidth = 1; // Weite wird zurück gesetzt
+
 		// setJMenuBar(myMenu);
 		setSize(900, 700);
 		setVisible(true);

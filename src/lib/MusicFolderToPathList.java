@@ -3,7 +3,6 @@ package lib;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.JInternalFrame;
 
 //Abstracte Klasse um Musikdateien aus einem Ordner auszulesen
 public abstract class MusicFolderToPathList {
@@ -17,13 +16,13 @@ public abstract class MusicFolderToPathList {
 
 	// Klassenmethode wird erstellt und bekommt das Fenster übergeben von dem es
 	// aufgerufen wurde
-	public static String[][] getMusicData(JInternalFrame parent) {
+	public static String[][] getMusicData() {
 		// festlegen, dass nur Ordner ausgewählt werden können
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		// parent wird übergeben, damit User erst nach auswahl zum Hauptfenster
 		// zurückkehren kann
-		int auswahl = fc.showOpenDialog(parent);
+		int auswahl = fc.showOpenDialog(null);
 		// Abfrage ob Auswahl getroffen wurde, bzw. abgebrochen wurde
 		if (auswahl == JFileChooser.APPROVE_OPTION) {
 			// DateiPfade werden in ein FileArray geladen
@@ -54,6 +53,7 @@ public abstract class MusicFolderToPathList {
 					musicData[musicFileCounter][1] = path;
 					System.out.println("File: " + musicFileCounter);
 					musicFileCounter++;
+
 				}
 			}
 			System.out.println("Ordner ausgelesen");

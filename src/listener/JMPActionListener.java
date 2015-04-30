@@ -40,7 +40,7 @@ public class JMPActionListener implements ActionListener {
 			System.out.println("Vorheriger Song");
 		} else if (e.getSource() == jmp.getMIOpenFile()) {
 			// Ordner öffnen
-			musicData = MusicFolderToPathList.getMusicData(jmp);
+			musicData = MusicFolderToPathList.getMusicData();
 			jmp.setData(musicData);
 			jmp.changeTable();
 			System.out.println("Ordner öffnen");

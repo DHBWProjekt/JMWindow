@@ -51,8 +51,6 @@ public class Hauptfenster extends JFrame {
 		// Menübar wird dem Fenster hinzugefügt
 		myReiter1.add(openNewJMPlayer);
 		myMenu.add(myReiter1);
-		setJMenuBar(myMenu);
-
 		// Button wird hinzugefügt
 		btnPanel.add(btnStopp);
 

@@ -36,7 +36,7 @@ public class JMPlayerPanel extends JPanel {
 	private String[] musicDataTitle = new String[] { "Pfad", "Pfad ASCII" };
 	// MusicData wird erstellt und Klassenmethode aufgerufen um Ordner
 	// auszulesen
-	private String[][] musicData = MusicFolderToPathList.getMusicData(null);
+	private String[][] musicData = MusicFolderToPathList.getMusicData();
 	// Tablemodel wird erstellt um es in ein JTabel anzeigen zu lassen
 	private DefaultTableModel pfadModel = new DefaultTableModel(musicData,
 			musicDataTitle);
